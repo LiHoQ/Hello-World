@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{a}}</title>
+    <style>
+        .d1{
+            height: 200px;
+            width: 300px;
+        }
+        img{
+            height: 200px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>新闻分类</h1>
+<ul>
+    {% for news in news_all %}
+        <li>分类：
+            <a href="{% url "kinshow:news" news.pk %}">{{ news.news_category }}</a>
+        标题：
+            <a href="{% url "kinshow:news" news.pk %}"
+               onclick="ga('send', 'event', 'corp_hp_clicks')">
+                {{ news.title }}</a>
+            {% if news.cover_pic  %}
+            <div><img src="{{ news.cover_pic }}"></div>
+            {% endif %}
+        <hr>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
